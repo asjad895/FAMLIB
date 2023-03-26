@@ -1,0 +1,215 @@
+
+{% extends "base.html" %}
+{% load static %}
+<!-- <link rel="stylesheet" type="text/css" href="C:/Users\ASUS\OneDrive\Documents\PYTHON BACKEND\Famlib\Famlib\static\css\contact.css"> -->
+{%block title %} Famlib|share {%endblock title %}
+{%block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0 py-1 mx-1" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+<h1>Collaborate and conquer</h1>
+<section class="get-in-touch">
+  <form class="contact-form row" enctype="multipart/form-data" method="post" action="/api/upload/">
+      {% csrf_token %}
+      <div class="form-field col-lg-6">
+        <input id="title" class="input-text js-input" type="text" name="title" required>
+        <label class="label" for="title">Title</label>
+      </div>
+      <div class="form-field col-lg-6">
+        <label class="label">Tags</label>
+        <div class="checkbox-group">
+          <div class="row">
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="fiction"> Fiction</label>
+            </div>
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="non-fiction"> Non-fiction</label>
+            </div>
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="biography"> Biography</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="machine-learning"> ML</label>
+            </div>
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="physics"> Core Sc.</label>
+            </div>
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="math"> Math</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="cse"> Computer Sc.</label>
+            </div>
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="data-science"> Data Sc.</label>
+            </div>
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="artificial-intelligence"> AI</label>
+            </div>
+            <div class="col">
+              <label><input type="checkbox" name="tags[]" value="social-science"> Social Sc.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-field col-lg-6 ">
+        <textarea id="desc" class="input-text js-input  " type="text" name="desc" required></textarea>
+        <label class="label" for="desc">Description</label>
+      </div>
+        <div class="form-field col-lg-6">
+            <label class="label" for="access">Who can access</label>
+            <select id="access" class="input-text js-input" name="access" required>
+                <option value="">Select an option</option>
+                <option value="1">Parents</option>
+                <option value="2">Young</option>
+                <option value="3">All</option>
+            </select>
+        </div>
+        <div class="form-field col-lg-6 file">
+          <input id="file" class="input-text js-input" type="file" name="file" required>
+          <label class="label file-label" for="file">File (less than 10Mb)</label>
+        </div>
+        
+        <div style="align-content: center;" class="form-field col-lg-12">
+          <input class="submit-btn " type="submit" value="Submit">
+        </div>
+    </form>  
+</section>
+<style>
+  .get-in-touch {
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-image: -moz-repeating-linear-gradient(left,#f4524d  0%,#5543ca 100%);
+  
+  }
+  h1{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 3.2em;
+    line-height: 60px;
+    padding-bottom: 10px;
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
+    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+    -webkit-background-clip: text !important;  
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  .contact-form .form-field {
+    position: relative;
+    margin: 10px 0;
+    margin-bottom: 10px;
+  }
+  .contact-form .input-text {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border-width: 0 0 2px 0;
+    border-color: #5543ca;
+    font-size: 18px;
+    line-height: 40px;
+    font-weight: 400;
+  }
+  .contact-form .input-text:focus {
+    /* outline: 2px; */
+    outline-offset: 2px;
+    outline: 2px solid #5543ca;
+  }
+  .contact-form .input-text:focus + .label,.contact-form .input-text.not-empty + .label {
+    -webkit-transform: translateY(-30x);
+    transform: translateY(-30px);
+  }
+  .contact-form .label {
+    position: absolute;
+    left: 20px;
+    /* bottom: 11px; */
+    top: 0;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #f4524d;
+    cursor:text;
+    transition: -webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+  }
+  .contact-form .submit-btn {
+    display: inline-block;
+    background-color: #000;
+    background-image: linear-gradient(125deg,#a72879,#064497);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    width:200px;
+    cursor: pointer;
+  }
+  .file-label {
+  position: absolute;
+  margin-top: 2px;
+  top: 12px;
+  left: 0;
+  font-size: 16px;
+  color: #4a0505;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.form-field.file .input-text:focus + .file-label,
+.form-field.file .input-text:not(:placeholder-shown) + .file-label {
+  top: -18px;
+  font-size: 12px;
+  color: #4f0606;
+}
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.col {
+  flex: 1;
+  margin-right: 2px;
+}
+
+.col label {
+  display: flex;
+  align-items: center;
+  color: #4f0606;
+}
+
+input[type="checkbox"] {
+  margin-right: 1px;
+}
+
+
+
+
+</style>
+
+{%endblock body %}
