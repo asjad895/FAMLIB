@@ -270,13 +270,16 @@ def contactus(request):
         message = request.POST.get('message')
         if message is None:
             messages.warning(request,"you have not entered any message!")
+            return redirect(reverse('contactus'))
         new_contact = Message(name=name, type=type,email=email, heading=heading, message=message, date=datetime.today())
         try:
             new_contact.save()
             messages.success(request,"message successfully reached!")
+            return redirect(reverse('contactus'))
 
         except Exception as e:
             messages.error(request,"Error: " + str(e))
+            return redirect(reverse('contactus'))
     if request.method=="GET":
         return render(request,'contact.html')
 
@@ -422,3 +425,23 @@ def book_list(request, user_pk=None, library_name=None):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+from .serializers import MessageSerializer
+
+@api_view(['GET', 'POST'])
+def messages_list(request):
+    """
+    List all messages or create a new message
+    """
+    if request.method == 'GET':
+        messages = Message.objects.all()
+        serializer = MessageSerializer(messages, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = MessageSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

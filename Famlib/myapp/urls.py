@@ -20,6 +20,8 @@ urlpatterns=[
  path('api/books/user/<str:user_pk>/', views.book_list),
  path('api/books/', views.book_list),
  path('api/books/library/<str:library_name>/', views.book_list),
- path('api/library/<str:name>/', views.library_detail, name='library_detail')
+ path('api/library/<str:name>/', views.library_detail, name='library_detail'),
+ path('api/message/', views.messages_list, name='messages_list'),
+
 
 ]

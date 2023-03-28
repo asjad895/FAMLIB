@@ -19,3 +19,8 @@ class BookSerializer(serializers.ModelSerializer):
         # exclude = ('id','date','username')
         # read_only_fields = ('id')
         fields='__all__'
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = '__all__'

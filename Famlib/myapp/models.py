@@ -32,15 +32,16 @@ def validate_file_size(value):
 
 # Create your models here.
 class Message(models.Model):
-    mid=models.AutoField(primary_key=True,default=1,editable=False)
+    mid=models.AutoField(primary_key=True,editable=False)
     type=models.CharField(max_length=20)
-    username = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     heading = models.CharField(max_length=100)
     message = models.TextField()
-    date = models.DateField()
+    date = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
-        return self.username,self.message
+        return f"{self.name} - {self.heading}"
 import datetime
 class Book(models.Model):
     id=models.CharField( primary_key=True, max_length=100,unique=True,editable=False)
