@@ -16,5 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model=Book
-        exclude = ('id','date','username')
+        # exclude = ('id','date','username')
         # read_only_fields = ('id')
+        fields='__all__'

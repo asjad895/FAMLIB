@@ -52,6 +52,7 @@ class Book(models.Model):
     file=models.FileField(upload_to='upload/',validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc','docs','txt','zip','.py','jpg','jpeg','png','docx', 'xls', 'xlsx', 'ppt'
                                                                                                       ,'pptx']),validate_file_size])
     username = models.CharField(max_length=40,default='asjad')
+    libraryname=models.CharField(max_length=50,default='Lib1')
     class Meta:
         app_label = 'myapp'
 

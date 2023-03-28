@@ -67,10 +67,10 @@ def create_library(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST','GET', 'PUT', 'DELETE'])
-def library_detail(request, email=None):
-    if email:
+def library_detail(request, name=None):
+    if name:
         try:
-            library = Library.objects.get(email=email)
+            library = Library.objects.get(name=name)
         except Library.DoesNotExist:
             return Response({'error': 'Library not found.'}, status=status.HTTP_404_NOT_FOUND)
         except Library.MultipleObjectsReturned:
