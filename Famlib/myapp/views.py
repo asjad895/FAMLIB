@@ -304,43 +304,40 @@ def userslevel(request):
         level = 1
 
     return Response({'level': level})
-@api_view(['POST','GET'])
+@api_view(['POST', 'GET'])
 def upload(request):
-    if request.method=='POST':
-        serializer = BookSerializer(data=request.data)
-        print(serializer)
-        if serializer.is_valid():
-            title = serializer.validated_data['title']
-            tags = serializer.validated_data['tags']
-            desc = serializer.validated_data['desc']
-            file = serializer.validated_data['file']
-            access = serializer.validated_data['access']
-            print(file)
-            if file is not None:
-                if request.session.get('username'):
-                    username=request.session.get('username')
-                    print(username)
-                    date=datetime.utcnow()
-                    id=str(title)+"_"+str(Users.objects.get(username=username).libraryid)
-                    print(id)
-                    new_book = Book.objects.create(id=id,title=title,tags=tags,desc=desc,date=date,blevel=access,file=file)
-                    try:
-                        serializer = BookSerializer(new_book)
-                        messages.success(request, "book uploaded successfully!👍")
-                        return HttpResponseRedirect(reverse('upload'))
-                    except Exception as e:
-                        messages.error(request, "Error: " + str(e))
-                        return redirect(reverse('upload'))
-                else:
-                    messages.warning(request, 'You need to be logged in to create a book.')
-                    return redirect(reverse('login'))
-            else:
-                messages.warning(request,"select a file.")
-        else:
-            # Return a message for invalid serializer data
-            messages.warning(request, 'Invalid data,may be This file already exist exist!')
+    if request.method == 'POST':
+        print(request.data)
+        title = request.data.get('title')
+        tags = request.data.getlist('tags[]')
+        desc = request.data.get('desc')
+        file = request.FILES.get('file')
+        access = request.data.get('blevel')
+        if not all([title, tags, desc, file, access]):
+            messages.warning(request, 'Please fill in all required fields.😎')
             return redirect(reverse('upload'))
+        extension = os.path.splitext(file.name)[1]
+        if extension not in ['.pdf', '.doc', '.docx', '.txt', '.zip', '.py', '.jpg', '.jpeg', '.png', '.xls', '.xlsx', '.ppt', '.pptx']:
+            messages.warning(request, "File extension should be from any of these: ['.pdf', '.doc', '.docx', '.txt', '.zip', '.py', '.jpg', '.jpeg', '.png', '.xls', '.xlsx', '.ppt', '.pptx']")
+            return redirect(reverse('upload'))
+        if request.session.get('username'):
+            username = request.session.get('username')
+            print(username)
+            date = datetime.utcnow()
+            id = str(title) + "_" + str(Users.objects.get(username=username).libraryid)
+            print(id)
+            try:
+                new_book = Book.objects.create(id=id, title=title, tags=tags, desc=desc, date=date, blevel=access, file=file,username=username)
+                messages.success(request, "Book uploaded successfully!👍")
+                return HttpResponseRedirect(reverse('upload'))
+            except Exception as e:
+                messages.error(request, "Error: " + str(e))
+                return redirect(reverse('upload'))
+        else:
+            messages.warning(request, 'You need to be logged in to create a book.')
+            return redirect(reverse('login'))
     return render(request, 'share.html')
+
         
 @api_view(['GET', 'POST'])
 def users_list(request):

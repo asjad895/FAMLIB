@@ -19,7 +19,7 @@
   <form class="contact-form row" enctype="multipart/form-data" method="post" action="/api/upload/">
       {% csrf_token %}
       <div class="form-field col-lg-6">
-        <input id="title" class="input-text js-input" type="text" name="title" required>
+        <input id="title" class="input-text js-input" type="text" name="title" required autocomplete="title">
         <label class="label" for="title">Title</label>
       </div>
       <div class="form-field col-lg-6">
@@ -69,8 +69,8 @@
         <label class="label" for="desc">Description</label>
       </div>
         <div class="form-field col-lg-6">
-            <label class="label" for="access">Who can access</label>
-            <select id="access" class="input-text js-input" name="access" required>
+            <label class="label" for="blevel">Who can access</label>
+            <select id="blevel" class="input-text js-input" name="blevel" required>
                 <option value="">Select an option</option>
                 <option value="1">Parents</option>
                 <option value="2">Young</option>
@@ -86,7 +86,7 @@
           <input class="submit-btn " type="submit" value="Submit">
         </div>
     </form>  
-</section>
+  </section>
 <style>
   .get-in-touch {
   max-width: 800px;
