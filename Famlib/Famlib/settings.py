@@ -121,6 +121,7 @@ STATIC_URL = "/static/"
 # STATIC_ROOT = "/var/www/dropbox.com/home/Projects/static/"
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static/')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
+MEDIA_URL='/upload/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 LOGIN_URL = '/api/login_user/'

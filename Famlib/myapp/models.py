@@ -50,7 +50,7 @@ class Book(models.Model):
     desc=models.CharField(max_length=300)
     date=models.DateField(default=datetime.date.today)
     blevel=models.IntegerField(default=3)
-    file=models.FileField(upload_to='upload/',validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc','docs','txt','zip','.py','jpg','jpeg','png','docx', 'xls', 'xlsx', 'ppt'
+    file=models.FileField(upload_to='library_content/',validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc','docs','txt','zip','.py','jpg','jpeg','png','docx', 'xls', 'xlsx', 'ppt'
                                                                                                       ,'pptx']),validate_file_size])
     username = models.CharField(max_length=40,default='asjad')
     libraryname=models.CharField(max_length=50,default='Lib1')
@@ -60,3 +60,8 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+class profile(models.Model):
+    user=models.OneToOneField(Users,on_delete=models.CASCADE)
+    image=models.ImageField(default='default.jpg',upload_to='profile_pics/')
+    def __str__(self):
+        return f'{self.user.username} profile'
