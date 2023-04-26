@@ -1,0 +1,30 @@
+.nav{
+    position: fixed;
+    top: 0;
+}
+
+.profile {
+    position: relative; /* ensure .dropdown_section is positioned relative to .profile */
+}
+
+.profile_pic{
+    background: white;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.dropdown_section{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(101, 113, 65, 0.9);
+    padding: 10px;
+    transition: 0.2s all ease-in-out;
+}
+
+.dropdown_hover:hover .dropdown_section{
+    display: block;
+    opacity: 1;
+}

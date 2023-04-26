@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
-from myapp.models import Message,Book,Users,Library
+from myapp.models import Message,Book,Users,Library,profile
 from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
 from django.contrib import messages
@@ -10,7 +10,6 @@ import requests
 import string
 from django.db.models import Q
 from django.urls import reverse
-from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.forms import Form, CharField ,ValidationError
 from django.http import HttpResponseBadRequest,HttpResponseRedirect,JsonResponse
@@ -445,3 +444,27 @@ def messages_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
+@csrf_exempt
+@api_view(['GET', 'POST'])
+def upload_profile_pic(request):
+    if request.method == 'POST' and request.FILES['profile_pic']:
+        profile_pic = request.FILES['profile_pic']
+        print(profile_pic)
+        if request.session.get('username'):
+            username = request.session.get('username')
+            print(username)
+        # Save the profile pic to your server
+        # You can use the `uuid` module to generate a unique filename for the image
+            # filename = str(username) + '.png'
+            # with open('path/to/save/' + filename, 'wb+') as f:
+            #     for chunk in profile_pic.chunks():
+            #         f.write(chunk)
+            try:
+                profile.objects.create(username=username,image=profile_pic)
+                return JsonResponse({'success': True})
+            except Exception as e:
+                messages.warning(request,e)
+                return JsonResponse({'success': False})

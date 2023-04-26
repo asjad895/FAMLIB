@@ -61,7 +61,7 @@ class Book(models.Model):
         return self.title
 
 class profile(models.Model):
-    user=models.OneToOneField(Users,on_delete=models.CASCADE)
+    user=models.CharField(max_length=50)
     image=models.ImageField(default='default.jpg',upload_to='profile_pics/')
     def __str__(self):
         return f'{self.user.username} profile'
