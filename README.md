@@ -22,4 +22,9 @@ Overall, FAMLIB is a powerful and innovative library system that showcases the p
 **AI Tutor:** FAMLIB includes an AI-powered tutor that uses machine learning algorithms to provide personalized feedback and guidance to students. The AI tutor can identify areas where students need improvement and provide customized study plans to help them reach their goals.  
 
 **AI Writing Assistant:** FAMLIB includes an AI-powered writing assistant that uses NLP to provide real-time feedback and suggestions to students as they write. The writing assistant can identify grammar and syntax errors, suggest improvements to sentence structure, and offer synonyms to help students expand their vocabulary.  
-**AI Study Buddy:** FAMLIB includes an AI-powered study buddy that uses machine learning algorithms to create customized quizzes and flashcards based on a student's learning goals and progress. The study buddy can also provide personalized feedback and recommendations for further study materials.  
+**AI Study Buddy:** FAMLIB includes an AI-powered study buddy that uses machine learning algorithms to create customized quizzes and flashcards based on a student's learning goals and progress. The study buddy can also provide personalized feedback and recommendations for further study materials. 
+
+
+
+### DEMO:
+
