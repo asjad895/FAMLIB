@@ -1,0 +1,16 @@
+
+a, p,h5{
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
+    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+    -webkit-background-clip: text !important; 
+    -webkit-text-fill-color: transparent !important;
+}
+
+body{
+    background-image: url('../img/bg/pexels-miesha-renae-maiden-390574.jpg');
+    background-size: cover;
+    background-position: center;
+}
