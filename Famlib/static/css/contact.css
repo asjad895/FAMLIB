@@ -1,75 +1,121 @@
 .get-in-touch {
-    max-width: 800px;
-    margin: 50px auto;
-    position: relative;
-    border-radius: 20px;
-    box-sizing: border-box;
-    background-image: -moz-repeating-linear-gradient(left,#f4524d  0%,#5543ca 100%);
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+  border-radius: 20px;
+  box-sizing: border-box;
+  /* background-image: -moz-repeating-linear-gradient(left,#f4524d  0%,#5543ca 100%); */
   
-  }
-  .get-in-touch .title {
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 3.2em;
-    line-height: 48px;
-    padding-bottom: 48px;
-    color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
-    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+}
+.get-in-touch .title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 3.2em;
+  line-height: 48px;
+  padding-bottom: 48px;
+  color: #5543ca;
+  background: #5543ca;
+  background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
+  background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
     /* -webkit-background-clip: text !important;  */
-    -webkit-text-fill-color: transparent !important;
-  }
-  
-  .contact-form .form-field {
-    position: relative;
-    margin: 32px 0;
-  }
-  .contact-form .input-text {
-    display: block;
-    width: 100%;
-    height: 36px;
-    border-width: 0 0 2px 0;
-    border-color: #5543ca;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 400;
-  }
-  .contact-form .input-text:focus {
-    outline: none;
-  }
-  .contact-form .input-text:focus + .label,
-  .contact-form .input-text.not-empty + .label {
-    -webkit-transform: translateY(-24px);
-            transform: translateY(-24px);
-  }
-  .contact-form .label {
-    position: absolute;
-    left: 20px;
-    bottom: 11px;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 400;
-    color: #5543ca;
-    cursor: text;
-    transition: -webkit-transform .2s ease-in-out;
-    transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out, 
-    -webkit-transform .2s ease-in-out;
-  }
-  .contact-form .submit-btn {
-    display: inline-block;
-    background-color: #000;
-     background-image: linear-gradient(125deg,#a72879,#064497);
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 16px;
-    padding: 8px 16px;
-    border: none;
-    width:200px;
-    cursor: pointer;
+  -webkit-text-fill-color: transparent !important;
 }
   
+.contact-form .form-field {
+  position: relative;
+  margin: 32px 0;
+}
+.contact-form .input-text {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #5543ca;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.contact-form .input-text:focus {
+   outline: none;
+}
+
+.contact-form .input-text:focus + .label,
+.contact-form .input-text.not-empty + .label {
+  -webkit-transform: translateY(-24px);
+  transform: translateY(-24px);
+}
+.contact-form .label {
+  position: absolute;
+  left: 20px;
+  bottom: 11px;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, 
+  -webkit-transform .2s ease-in-out;
+}
+.contact-form .submit-btn {
+  display: inline-block;
+  background-color: #000;
+  background-image: linear-gradient(125deg,#a72879,#064497);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  width:200px;
+  cursor: pointer;
+}
+
+body{
+  /* background-image: url("{% static 'img/siamese.webp' %}"); */
+  margin-bottom: 60px; /* Height of the footer */
+  /* background-color:#7e92b3; */
+  background-image: url('../img/bg/pexels-timothy-paule-ii-2002719.jpg');
+  background-size: 300,300;;
+  background-position: center;
+}
+
+label{
+  color: #5543ca;
+  background: #5543ca;
+  background: -moz-linear-gradient(left,#074081  0%,#5543ca 100%) !important;
+  background: -webkit-linear-gradient(left,#084a9b  0%,#5543ca 100%) !important;
+  background: linear-gradient(to right,#093c85  0%,#5543ca  100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Height of the footer */
+  background-color: #110909;
+}
+.navbar-brand,button,.nav-link{
+  color: #5543ca;background: #5543ca;
+  background: -moz-linear-gradient(left,#064388  0%,#5543ca 100%) !important;
+  background: -webkit-linear-gradient(left,#064189  0%,#5543ca 100%) !important;
+  background: linear-gradient(to right,#0a2189  0%,#5543ca  100%) !important;
+  -webkit-background-clip: text !important;  
+  -webkit-text-fill-color: transparent !important;
+}
+.navbar{
+  background-color: #7295cc;
+}
+.footer{
+  text-align: center;
+  background-color: #7295cc;
+}

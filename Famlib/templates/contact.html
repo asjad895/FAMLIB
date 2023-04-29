@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 {%block title %} Famlib|contact Us {%endblock title %}
 {%block body %}
 {% if messages %}
@@ -18,7 +19,7 @@
   <form class="contact-form row" method="post" action="{% url 'contactus' %}">
     {% csrf_token %}
     <div class="form-field col-lg-6">
-      <label class="label" for="type">Contact Type</label>
+      <label class="mtype" for="type">Contact Type</label>
       <select id="type" class="js-input" name="type" required onchange="changeSectionTitle(this.value)">
         <option value="feedback">Feedback</option>
         <option value="contact">Contact</option>
@@ -45,92 +46,33 @@
     </div>
   </form> 
 </section>
+<div>
+  <footer class="footer">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Linkedin -->
+        <a class="btn text-white btn-floating m-5"style="background-color: #0481c4;"
+        href="https://www.linkedin.com/in/md-asjad-314501211/"role="button">
+        <i class="fab fa-linkedin-in me-2"></i>Linkedin</a>
+        <!-- Github -->
+        <a class="btn text-white btn-floating m-5" style="background-color: #000000;"
+        href="https://github.com/asjad895"role="button">
+        <i class="fab fa-github me-2"></i>Github</a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(23, 3, 102, 0.2);">
+      © 2023 Copyright:
+      <a class="text-white" href="#">Evolve.ai.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
 
-<script>
-  function changeSectionTitle(value) {
-    const sectionTitle = document.getElementById("section-title");
-    if (value === "feedback") {
-      sectionTitle.textContent = "Got a suggestion or feedback? We're all ears! Fill out the form and let us know what's on your mind";
-    } else {
-      sectionTitle.textContent = "Let's stay connected! Send us a message and we'll get back to you as soon as possible.";
-    }
-  }
-</script>
+</div>
+<script src="{%static 'js/contact.js'%}"></script>
 
-<style>
-  .get-in-touch {
-  max-width: 800px;
-  margin: 50px auto;
-  position: relative;
-  border-radius: 20px;
-  box-sizing: border-box;
-  background-image: -moz-repeating-linear-gradient(left,#f4524d  0%,#5543ca 100%);
-  
-  }
-  .title {
-    text-align: center;
-    letter-spacing: 2px;
-    font-size: 2.0em;
-    line-height: auto;
-    padding-bottom: 48px;
-    color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
-    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-    -webkit-background-clip: text !important;  
-    -webkit-text-fill-color: transparent !important;
-  }
-  
-  .contact-form .form-field {
-    position: relative;
-    margin: 32px 0;
-  }
-  .contact-form .input-text {
-    display: block;
-    width: 100%;
-    height: 36px;
-    border-width: 0 0 2px 0;
-    border-color: #5543ca;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 400;
-  }
-  .contact-form .input-text:focus {
-    outline-offset: 2px;
-    outline: 2px solid #5543ca;
-  }
-  .contact-form .input-text:focus + .label,.contact-form .input-text.not-empty + .label {
-    -webkit-transform: translateY(-24px);
-    transform: translateY(-24px);
-  }
-  .contact-form .label {
-    position: absolute;
-    left: 20px;
-    bottom: 11px;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 400;
-    color: #5543ca;
-    cursor: text;
-    transition: -webkit-transform .2s ease-in-out;
-    transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out, 
-    -webkit-transform .2s ease-in-out;
-  }
-  .contact-form .submit-btn {
-    display: inline-block;
-    background-color: #000;
-    background-image: linear-gradient(125deg,#a72879,#064497);
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 16px;
-    padding: 8px 16px;
-    border: none;
-    width:200px;
-    cursor: pointer;
-  }
-
-</style>
 {%endblock body %}

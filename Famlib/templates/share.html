@@ -1,6 +1,9 @@
-
 {% extends "base.html" %}
 {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"> 
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/share.css' %}">
 {%block title %} Famlib|share {%endblock title %}
 {%block body %}
 {% if messages %}
@@ -10,12 +13,12 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-</div>
-{% endfor %}
-{% endif %}
-<h1>Collaborate and conquer</h1>
-<section class="get-in-touch">
-  <form class="contact-form row" enctype="multipart/form-data" method="post" action="/api/upload/">
+  </div>
+  {% endfor %}
+  {% endif %}
+  <h1>Collaborate and conquer</h1>
+  <section class="get-in-touch">
+    <form class="contact-form row" enctype="multipart/form-data" method="post" action="/api/upload/">
       {% csrf_token %}
       <div class="form-field col-lg-6">
         <input id="title" class="input-text js-input" type="text" name="title" required autocomplete="title">
@@ -86,129 +89,32 @@
         </div>
     </form>  
   </section>
-<style>
-  .get-in-touch {
-  max-width: 800px;
-  margin: 50px auto;
-  position: relative;
-  border-radius: 20px;
-  box-sizing: border-box;
-  background-image: -moz-repeating-linear-gradient(left,#f4524d  0%,#5543ca 100%);
-  
-  }
-  h1{
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 3.2em;
-    line-height: 60px;
-    padding-bottom: 10px;
-    color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
-    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-    -webkit-background-clip: text !important;  
-    -webkit-text-fill-color: transparent !important;
-  }
-  
-  .contact-form .form-field {
-    position: relative;
-    margin: 10px 0;
-    margin-bottom: 10px;
-  }
-  .contact-form .input-text {
-    display: block;
-    width: 100%;
-    height: 40px;
-    border-width: 0 0 2px 0;
-    border-color: #5543ca;
-    font-size: 18px;
-    line-height: 40px;
-    font-weight: 400;
-  }
-  .contact-form .input-text:focus {
-    /* outline: 2px; */
-    outline-offset: 2px;
-    outline: 2px solid #5543ca;
-  }
-  .contact-form .input-text:focus + .label,.contact-form .input-text.not-empty + .label {
-    -webkit-transform: translateY(-30x);
-    transform: translateY(-30px);
-  }
-  .contact-form .label {
-    position: absolute;
-    left: 20px;
-    /* bottom: 11px; */
-    top: 0;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 400;
-    color: #f4524d;
-    cursor:text;
-    transition: -webkit-transform .2s ease-in-out;
-    transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
-  }
-  .contact-form .submit-btn {
-    display: inline-block;
-    background-color: #000;
-    background-image: linear-gradient(125deg,#a72879,#064497);
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 16px;
-    padding: 8px 16px;
-    border: none;
-    width:200px;
-    cursor: pointer;
-  }
-  .file-label {
-  position: absolute;
-  margin-top: 2px;
-  top: 12px;
-  left: 0;
-  font-size: 16px;
-  color: #4a0505;
-  pointer-events: none;
-  transition: 0.2s ease all;
-}
+  <div>
+    <footer class="footer">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Linkedin -->
+          <a class="btn text-white btn-floating m-5"style="background-color: #0481c4;"
+          href="https://www.linkedin.com/in/md-asjad-314501211/"role="button">
+          <i class="fab fa-linkedin-in me-2"></i>Linkedin</a>
+          <!-- Github -->
+          <a class="btn text-white btn-floating m-5" style="background-color: #000000;"
+          href="https://github.com/asjad895"role="button">
+          <i class="fab fa-github me-2"></i>Github</a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(23, 3, 102, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="#">Evolve.ai.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </div>
 
-.form-field.file .input-text:focus + .file-label,
-.form-field.file .input-text:not(:placeholder-shown) + .file-label {
-  top: -18px;
-  font-size: 12px;
-  color: #4f0606;
-}
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-}
-
-.col {
-  flex: 1;
-  margin-right: 2px;
-}
-
-.col label {
-  display: flex;
-  align-items: center;
-  color: #4f0606;
-}
-
-input[type="checkbox"] {
-  margin-right: 1px;
-}
-
-
-
-
-</style>
 
 {%endblock body %}

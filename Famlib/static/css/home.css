@@ -146,6 +146,7 @@ label{
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
+
 html {
   position: relative;
   min-height: 100%;
@@ -172,12 +173,3 @@ footer {
   text-align: center;
   background-color: #7295cc;
 }
-/* .card{
-  background-color: #294572;
-  margin-top: 10px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: #0a1523;
-  margin-left: 10px;
-  margin-right: 10px;
-} */
