@@ -1,0 +1,44 @@
+body {
+    background-image: url("../img/bg/pexels-pixabay-256431.jpg");
+    background-size: cover;
+    background-position: center;
+}
+form {
+    /* background-color: #893fda; */
+    border: 2px solid #dee2e6;
+    border-radius: 20px;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 3.2em;
+    line-height: 60px;
+    padding-bottom: 10px;
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
+    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+    -webkit-background-clip: text !important;  
+   -webkit-text-fill-color: transparent !important;
+}
+h2{
+    text-align: center;
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
+    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+    -webkit-background-clip: text !important;  
+   -webkit-text-fill-color: transparent !important;
+    margin-bottom: 30px;
+}
+label{
+    color: #000000;
+}

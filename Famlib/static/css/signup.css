@@ -1,0 +1,55 @@
+.card-registration {
+    background-color: transparent;
+    border-radius: 40px;
+    box-sizing: border-box;
+    border: 2px solid #dee2e6;
+  }
+  .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    /* color: #b8d0e8; */
+  }
+.card-registration .select-arrow {
+    top: 13px;
+}
+.card-body{
+    /* color: rgb(62, 45, 77); */
+    justify-content: center;
+}
+body {
+  background-image: url('../img/bg/pexels-miesha-renae-maiden-390574.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+h3{
+text-align: center; 
+letter-spacing: 3px;
+font-size: 3.2em;
+line-height: auto;
+padding-bottom: 20px;
+color: #5543ca;
+background: #5543ca;
+background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
+background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+-webkit-background-clip: text !important;  
+-webkit-text-fill-color: transparent !important;
+box-sizing: border-box;
+margin-top: 0px;
+border-radius: 5%;
+border-width: 4px;
+box-shadow: 7px 7px 10px  #5543ca;
+}
+p,label{
+  color: #5543ca;
+  background: #5543ca;
+  background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
+  background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+  -webkit-background-clip: text !important; 
+  -webkit-text-fill-color: transparent !important;
+}

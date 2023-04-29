@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,62 +11,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <!-- Bootstrap CSS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="static/css/signup.css">  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
     <title> Famlib|signup</title>
-    <style>
-      .card-registration {
-        background-color: transparent;
-        border-radius: 40px;
-        box-sizing: border-box;
-        border: 2px solid #dee2e6;
-      }
-      .card-registration .select-input.form-control[readonly]:not([disabled]) {
-        font-size: 1rem;
-        line-height: 2.15;
-        padding-left: .75em;
-        padding-right: .75em;
-        /* color: #b8d0e8; */
-      }
-    .card-registration .select-arrow {
-        top: 13px;
-    }
-    .card-body{
-        /* color: rgb(62, 45, 77); */
-        justify-content: center;
-    }
-    body {
-      background-image: url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1517&q=80');
-    }
-    h3{
-    text-align: center; 
-    letter-spacing: 3px;
-    font-size: 3.2em;
-    line-height: auto;
-    padding-bottom: 20px;
-    color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
-    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-    -webkit-background-clip: text !important;  
-    -webkit-text-fill-color: transparent !important;
-    box-sizing: border-box;
-    margin-top: 0px;
-    border-radius: 5%;
-    border-width: 4px;
-    box-shadow: 7px 7px 10px  #5543ca;
-   }
-   p,label{
-      color: #5543ca;
-      background: #5543ca;
-      background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-      background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
-      background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-      -webkit-background-clip: text !important; 
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    </style>
   </head>
   <body>
     {% if messages %}
@@ -122,12 +69,6 @@
                         <label for="password" class="form-label">Password</label>
                       </div>
                     </div>
-                    <!-- <div class="col-md-6 mb-2 d-flex align-items-center">
-                      <div class="form-outline datepicker w-100">
-                        <input type="password" class="form-control form-control-lg" id="cpassword"  name="cpassword" required/>
-                        <label for="cpassword" class="form-label">Confirm your Password</label>
-                      </div>
-                    </div> -->
                   </div>
                   <div class="row-cols-1 mt-0 text-center">
                     <div class="col-md-6 mb-1">

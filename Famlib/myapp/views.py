@@ -60,10 +60,17 @@ def create_library(request):
         try:
             email_message.send()
             serializer = LibrarySerializer(library)
-            return Response(serializer.data, status=status.HTTP_201_CREATED,headers={'success': 'Library created successfully. Check your mail for next steps. Thank you!'})
+
+            #return Response(serializer.data, status=status.HTTP_201_CREATED,headers={'success': 'Library created successfully. Check your mail for next steps. Thank you!'})
+            messages.success(request, 'Library created successfully. Check your mail for next steps. Thank you!')
+            return redirect('index')
         except Exception as e:
-            return e
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            messages.error(request, 'error',str(e))
+            return redirect('index')
+            # return e
+    #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    messages.success(request, 'Invalid data')
+    return redirect('index')
 
 @api_view(['POST','GET', 'PUT', 'DELETE'])
 def library_detail(request, name=None):
@@ -96,35 +103,7 @@ def library_detail(request, name=None):
         if request.method == 'GET':
             serializer = LibrarySerializer(libraries, many=True)
             return Response(serializer.data)
-
-        elif request.method == 'POST':
-            serializer = LibrarySerializer(data=request.data)
-            if serializer.is_valid():
-                email = serializer.validated_data['email']
-                name = serializer.validated_data['name']
-                if Library.objects.filter(email=email).exists():
-                    messages.warning(request, "A library already exists for this email address.")
-                else:
-                    library_id = uuid.uuid4()
-                    library = Library.objects.create(name=name, library_id=library_id, email=email)
-                    email_subject = 'Welcome to Famlib- AI Powered Library!'
-                    email_body = render_to_string('email.html', {'name': name, 'library_id': library_id})
-                    text_body = strip_tags(email_body)
-                    email_message = EmailMultiAlternatives(
-                        subject=email_subject,
-                        body=text_body,
-                        from_email='mdasjad895@gmail.com',
-                        to=[email]
-                    )
-                    email_message.attach_alternative(email_body, 'text/html')
-                    try:
-                        email_message.send()
-                        serializer = LibrarySerializer(library)
-                        return Response(serializer.data, status=status.HTTP_201_CREATED,
-                                        headers={'success': 'Library created successfully. Check your mail for next steps. Thank you!'})
-                    except Exception as e:
-                        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
