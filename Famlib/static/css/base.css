@@ -75,9 +75,6 @@ footer {
     border-radius: 20px;
     box-sizing: border-box;
     background-image: -moz-repeating-linear-gradient(left,#f4524d  0%,#5543ca 100%);
-    background-image: url('../img/bg/pexels-ann-poan-5797900.jpg');
-    background-size: 300px 300px;;
-    background-position: center;
 }
   
 h1{

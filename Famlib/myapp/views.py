@@ -205,7 +205,7 @@ def login_user(request):
                 return render(request,'home.html',data)
             messages.error(request,"Invalid login credentials. Please try again.😒")
             return redirect(reverse('login_user'))
-        except User.DoesNotExist:
+        except Exception as e:
             messages.warning(request,'This username does not exist!👍')
             pass
     return render(request, 'login.html')
