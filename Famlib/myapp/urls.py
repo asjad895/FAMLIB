@@ -22,6 +22,7 @@ urlpatterns=[
  path('api/books/library/<str:library_name>/', views.book_list),
  path('api/library/<str:name>/', views.library_detail, name='library_detail'),
  path('api/message/', views.messages_list, name='messages_list'),
-path('api/profile/', views.upload_profile_pic, name='upload_profile_pic'),]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ path('api/content/', views.content, name='contents'),
+ path('api/profile/', views.upload_profile_pic, name='upload_profile_pic'),]
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

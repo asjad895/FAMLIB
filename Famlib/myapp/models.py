@@ -43,7 +43,7 @@ class Message(models.Model):
     def __str__(self):
         return f"{self.name} - {self.heading}"
 import datetime
-class Book(models.Model):
+class Content(models.Model):
     id=models.CharField( primary_key=True, max_length=100,unique=True,editable=False)
     title=models.CharField(max_length=50)
     tags=models.CharField(max_length=100)

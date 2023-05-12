@@ -1,11 +1,14 @@
 from django.shortcuts import render,HttpResponse,redirect
-from myapp.models import Message,Book,Users,Library,profile
+from myapp.models import *
 from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
+from django.core import serializers
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 import os
 import uuid
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 import requests
 import string
 from django.db.models import Q
@@ -232,10 +235,10 @@ def search(request):
     # Query all posts
     search_post = request.GET.get('search')
     if search_post:
-        Books = Book.objects.filter(Q(title__icontains=search_post) & Q(desc__icontains=search_post))
+        Books = Content.objects.filter(Q(title__icontains=search_post) & Q(desc__icontains=search_post))
     else:
     # If not searched, return default posts
-        Books = Book.objects.all().order_by("title")
+        Books = Content.objects.all().order_by("title")
     return render(request, 'home.html', {'Books': Books})
 
 
@@ -294,6 +297,7 @@ def upload(request):
         desc = request.data.get('desc')
         file = request.FILES.get('file')
         access = request.data.get('blevel')
+
         if not all([title, tags, desc, file, access]):
             messages.warning(request, 'Please fill in all required fields.😎')
             return redirect(reverse('upload'))
@@ -307,8 +311,10 @@ def upload(request):
             date = datetime.utcnow()
             id = str(title) + "_" + str(Users.objects.get(username=username).libraryid)
             print(id)
+            id=Users.objects.get(username=username).libraryid
+            lib=Library.objects.get(library_id=id).name
             try:
-                new_book = Book.objects.create(id=id, title=title, tags=tags, desc=desc, date=date, blevel=access, file=file,username=username)
+                new_con = Content.objects.create(id=id, title=title, tags=tags, desc=desc, date=date, blevel=access, file=file,username=username,libraryname=lib)
                 messages.success(request, "Book uploaded successfully!👍")
                 return HttpResponseRedirect(reverse('upload'))
             except Exception as e:
@@ -380,20 +386,20 @@ def users_detail(request, username=None,libraryid=None):
 def book_list(request, user_pk=None, library_name=None):
     if request.method == 'GET':
         if user_pk and library_name:
-            books = Book.objects.filter(libraryname=library_name,username=user_pk)
+            books = Content.objects.filter(libraryname=library_name,username=user_pk)
             print('both')
         elif user_pk:
-            books = Book.objects.filter(username=user_pk)
+            books = Content.objects.filter(username=user_pk)
             serializer = BookSerializer(books, many=True)
             print('user')
             return Response(serializer.data)
         elif library_name:
-            books=Book.objects.filter(libraryname=library_name)
+            books=Content.objects.filter(libraryname=library_name)
             serializer = BookSerializer(books, many=True)
             print('library')
             return Response(serializer.data)
         else:
-            books=Book.objects.all()
+            books=Content.objects.all()
             serializer=BookSerializer(books,many=True)
             print('books')
             return Response(serializer.data)
@@ -423,9 +429,6 @@ def messages_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
-
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def upload_profile_pic(request):
@@ -435,15 +438,20 @@ def upload_profile_pic(request):
         if request.session.get('username'):
             username = request.session.get('username')
             print(username)
-        # Save the profile pic to your server
-        # You can use the `uuid` module to generate a unique filename for the image
-            # filename = str(username) + '.png'
-            # with open('path/to/save/' + filename, 'wb+') as f:
-            #     for chunk in profile_pic.chunks():
-            #         f.write(chunk)
             try:
                 profile.objects.create(username=username,image=profile_pic)
                 return JsonResponse({'success': True})
             except Exception as e:
                 messages.warning(request,e)
                 return JsonResponse({'success': False})
+@api_view(['GET'])
+def content(request):
+    username = request.session.get('username')
+    id = Users.objects.get(username=username).libraryid
+    libn = Library.objects.get(library_d=id).name
+    conts = Content.objects.filter(libraryname=libn)
+    json_data = serializers.serialize('json', conts)
+    return JsonResponse(json_data, safe=False)
+
+
+

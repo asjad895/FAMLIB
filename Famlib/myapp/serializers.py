@@ -1,6 +1,6 @@
 import rest_framework
 from rest_framework import serializers
-from .models import Library,Users,Book,Message
+from .models import*
 
 class LibrarySerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Book
+        model=Content
         # exclude = ('id','date','username')
         # read_only_fields = ('id')
         fields='__all__'

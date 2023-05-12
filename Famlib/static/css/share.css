@@ -127,10 +127,9 @@ html {
     min-height: 100%;
 }
 body{
-    /* background-image: url("{% static 'img/siamese.webp' %}"); */
   margin-bottom: 60px; /* Height of the footer */
   background-color:#7e92b3;
-  background-image: url('../img/bg/pexels-timothy-paule-ii-2002719.jpg');
+  background-image: url('../img/bg/pexels-rahul-716398.jpg');
   background-size: 300,300;;
   background-position: center;
 }
