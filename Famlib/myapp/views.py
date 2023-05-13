@@ -446,12 +446,19 @@ def upload_profile_pic(request):
                 return JsonResponse({'success': False})
 @api_view(['GET'])
 def content(request):
-    username = request.session.get('username')
-    id = Users.objects.get(username=username).libraryid
-    libn = Library.objects.get(library_d=id).name
-    conts = Content.objects.filter(libraryname=libn)
-    json_data = serializers.serialize('json', conts)
-    return JsonResponse(json_data, safe=False)
+    if request.session.get('username'):
+        username = request.session.get('username')
+        print(username)
+    else:
+        return JsonResponse({"error": "please login"}, status=401, safe=False)
+
+    if username:
+        id = Users.objects.get(username=username).libraryid
+        libn = Library.objects.get(library_id=id).name
+        print(libn)
+        conts = Content.objects.filter(libraryname=libn)
+        json_data = serializers.serialize('json', conts)
+        return JsonResponse(json_data, safe=False)
 
 
 

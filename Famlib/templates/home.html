@@ -66,21 +66,18 @@
         </div>
         {% endfor %}
         {% endif %}
-        <div class="d-flex justify-content-center align-items-center" style="height: 20vh;">
-            <h1 class="text-center " style="font-size: 4rem;color: #5543ca;
-            background: #5543ca;
-            background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-            background: -webkit-linear-gradient(left,#984745  0%,#5543ca 100%) !important;
-            background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-            -webkit-background-clip: text !important;  
-            -webkit-text-fill-color: transparent !important;">
-                <!-- showing their own library asynchronous -->
-                {% if name %}
-                    {{ name }}
-                {% else %}
-                    My Library
-                {% endif %}
-            </h1>
+        <div class="d-flex">
+            <div>
+                <h1 calss="header">
+                    <!-- showing their own library asynchronous -->
+                    {% if name %}
+                        {{ name }}
+                    {% else %}
+                        My Library
+                    {% endif %}
+                </h1>
+
+            </div>  
         </div>
         <div class="slide-container swiper ">
             <div class="slide-content">
@@ -272,8 +269,8 @@
                 <!-- Copyright -->
             </footer>
         </div>
+        <link rel="stylesheet" href="{%static 'js/swiper-bundle.min.js'%}">
+        <script src="{%static 'js/home.js'%}"></script>
     </body>
-    <link rel="stylesheet" href="{%static 'js/swiper-bundle.min.js'%}">
-    <script src="{%static 'js/home.js'%}"></script>
 </html>
 

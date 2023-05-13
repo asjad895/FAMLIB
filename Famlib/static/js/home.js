@@ -27,3 +27,22 @@ var swiper = new Swiper(".slide-content", {
         },
     },
 });
+
+fetch('http://127.0.0.1:8000/api/content/')
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('API request failed');
+    }
+})
+.then(data => {
+    // Process the response data and populate the home page
+    console.log(data);
+    console.log("aaaaaaaaaaa")
+    // Do something with the fetched contents
+})
+.catch(error => {
+    // Handle any errors that occurred during the API request
+    console.error(error);
+});
