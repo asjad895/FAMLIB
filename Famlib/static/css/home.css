@@ -136,6 +136,7 @@ body{
   /* background-image: url("{% static 'img/siamese.webp' %}"); */
   margin-bottom: 60px; /* Height of the footer */
   background-color:#e9eef7;
+  min-height: 100vh;
 }
 label{
   color: #5543ca;
@@ -170,7 +171,8 @@ html {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px;
+  height: 40px;
+  margin-top: 5px;
 }
 
 .d-flex {
@@ -205,4 +207,14 @@ html {
   background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
   -webkit-background-clip: text !important;  
   -webkit-text-fill-color: transparent !important
+}
+.recom{
+  text-align: center;
+  align-items: center;
+  margin-top: 5px;
+  min-height: 600px
+}
+h3{
+  height: 50px;
+  background-color: #4070F4
 }
