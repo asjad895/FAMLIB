@@ -33,6 +33,7 @@
             <div class="card shadow-2-strong card-registration">
               <div class="card-body  p-md-2">
                 <h3 class="mb-1 pb-0 pb-md-0 mb-md-3 text-center ">Signup</h3>
+                <!-- Submit data to the backend -->
                 <form method="post" action="{% url 'signup' %}">
                   {% csrf_token %}
                   <div class="row mt-0 pt-0">

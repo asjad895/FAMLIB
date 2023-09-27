@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 import os
 import uuid
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import requests
@@ -217,7 +218,6 @@ def login_user(request):
     
 def index(request):
     return render(request,'index.html')
-from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request,'home.html')
